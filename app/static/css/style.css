@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Hurricane&family=Libre+Bodoni:wght@500&family=Montserrat+Alternates&family=Montserrat:wght@100&family=Oleo+Script+Swash+Caps:wght@400;700&family=Poppins:ital,wght@0,400;1,300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  }
+
+  nav{
+    display: flex;
+    height: 150px;
+    align-items: center;
+      justify-content: space-between;
+        
+
+
+  }
+
+  nav .logo{
+      width: 20%;
+      margin-left: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 0.8rem;
+  }
+nav .navmenu{
+    width: 70%;
+    position: relative;
+   
+}
+
+nav .navmenu a{
+    margin-left: 30px;
+    color:rgb(65,65,65);
+}
+
+.logo p:nth-child(1){
+    color: #D14200;
+    font-size: 45px;
+    font-family:'libre baskerville',serif;
+    letter-spacing:normal;
+    font-weight: 100;
+   
+}
+.logo p:nth-child(2){
+    color: black;
+    font-size: 16px;
+    position: relative;
+    bottom: 20%;
+    font-family: 'libre baskerville',serif;
+    color:rgb(65,65,65);
+    font-weight: 200;
+    letter-spacing: normal;
+    font-weight: 100;
+    
+}
