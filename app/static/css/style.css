@@ -55,4 +55,40 @@ nav .navmenu a{
     letter-spacing: normal;
     font-weight: 100;
     
+
+}
+
+.about{
+    display: flex;
+    justify-content: center;
+}
+
+.about .left{
+    width: 45%;
+    background-color: rgb(240,213,201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left img{
+    height: 80%;
+    width: 80%;
+    object-fit: contain;
+}
+
+.about .right{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid red;
+}
+
+.me{
+    font-size: 16;
+    line-height: 1.6em;
+    color: rgb(65,65,65);
+    text-align: start;
+    margin-left: 20px;
 }
