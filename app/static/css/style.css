@@ -11,14 +11,13 @@ body {
     display: flex;
     height: 150px;
     align-items: center;
-      justify-content: space-between;
         
 
 
   }
 
   nav .logo{
-      width: 20%;
+      width: 30%;
       margin-left: 35px;
       display: flex;
       flex-direction: column;
@@ -26,14 +25,14 @@ body {
       line-height: 0.8rem;
   }
 nav .navmenu{
-    width: 70%;
+    width: 40%;
     position: relative;
    
 }
 
 nav .navmenu a{
     margin-left: 30px;
-    color:rgb(65,65,65);
+    color:rgb(65,65,65,.6);
 }
 
 .logo p:nth-child(1){
@@ -50,7 +49,7 @@ nav .navmenu a{
     position: relative;
     bottom: 20%;
     font-family: 'libre baskerville',serif;
-    color:rgb(65,65,65);
+    color:rgb(65,65,65, .6);
     font-weight: 200;
     letter-spacing: normal;
     font-weight: 100;
@@ -63,32 +62,46 @@ nav .navmenu a{
     justify-content: center;
 }
 
-.about .left{
+.about .aboutleft{
     width: 45%;
-    background-color: rgb(240,213,201);
+    background-color: rgba(240,213,201,.1);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.left img{
+.aboutleft img{
     height: 80%;
     width: 80%;
     object-fit: contain;
 }
 
-.about .right{
+.about .aboutright{
     width: 50%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border: 2px solid red;
+    margin-left: 20px;
 }
 
 .me{
     font-size: 16;
     line-height: 1.6em;
-    color: rgb(65,65,65);
+    color: rgba(65,65,65,.6);
     text-align: start;
     margin-left: 20px;
+}
+
+.inner{
+    margin-left: 20px;
+}
+
+.inner h1{
+    font-size: 48px;
+    color: #414141;
+}
+
+.inner p{
+    color: rgb(65,65,65, .6);
+
 }
