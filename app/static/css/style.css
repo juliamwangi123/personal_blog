@@ -105,3 +105,28 @@ nav .navmenu a{
     color: rgb(65,65,65, .6);
 
 }
+
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    color:gainsboro;
+    background-color: #414141;
+}
+
+.footerleft{
+    width: 20%;
+}
+
+.contactForm{
+    width: 50%;
+}
+
+.questions{
+    position: relative;
+    right: 25%;
+}
+
+.contactus{
+    position: relative;
+    right: 35%;
+}
