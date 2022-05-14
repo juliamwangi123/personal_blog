@@ -3,7 +3,7 @@ import re
 from app import app
 from flask import redirect, render_template, url_for,flash
 from app.models import Blog,User
-from app.forms import BlogForm,LoginForm
+from app.forms import BlogForm,LoginForm,RegistrationForm
 from app import db
 from flask_login import current_user, login_user
 from flask_login import logout_user
@@ -69,3 +69,19 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+#regestration of new user
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash(f'Account succesfully created', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
