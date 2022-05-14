@@ -12,8 +12,7 @@ db=SQLAlchemy(app)
 #object representing migration  engine
 migrate=Migrate(app, db)
 
-#initialize loginmanager
-
 login=LoginManager(app)
+
 
 from app import views,models

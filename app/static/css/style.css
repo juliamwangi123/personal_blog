@@ -132,3 +132,9 @@ footer{
     position: relative;
     right: 35%;
 }
+
+.blogs{
+    border: 2px solid red;
+    display: flex;
+}
+

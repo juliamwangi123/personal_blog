@@ -1,33 +1,44 @@
 from datetime import datetime
-import email
-from tokenize import StringPrefix
-from app import db 
+from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from app import login
 
 
+class Blog(UserMixin ,db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    title=db.Column(db.String(30))
+    sub_title=db.Column(db.String(20))
+    content=db.Column(db.String(300))
+    time_posted=db.Column(db.DateTime,index=True, default=datetime.now)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-#user table
+    
+
+    def __repr__(self):
+        return '<User {}>'.format(self.title)
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 class User(db.Model):
-    id=db.Column(db.Integer(), primary_key=True)
-    email=db.Column(db.String(200))
-    password=db.Column(db.String())
-    blogs=db.relationship('Blog' ,backref='author', lazy='dynamic')
-    def __repr__(self):
-        
-        return f"User('{self.email}','{self.password}')"
-#blog table
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    email = db.Column(db.String(120), index=True, unique=True)
+    password_hash = db.Column(db.String(128))
+    blogs = db.relationship('Blog', backref='author', lazy='dynamic')
 
-class Blog(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    title=db.Column(db.String(120), index=True)
-    sub_title=db.Column(db.String(120))
-    image=db.Column(db.String )
-    date_posted=db.Column(db.DateTime, default=datetime.now)
-    content=db.Column(db.Text)
-    user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
     def __repr__(self):
-        
-        return f"Blog('{self.title}','{self.sub_title}','{self.date_posted}')"
+        return '<User {}>'.format(self.username)
 
 
