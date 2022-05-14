@@ -1,6 +1,7 @@
+from tkinter import S
 from turtle import title
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField,SubmitField
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField
 
@@ -9,4 +10,4 @@ class  Blog(FlaskForm):
     sub_title=StringField('Sub title', validators=[StringField()])
     image=FileField('Blog Image', validators=[DataRequired()])
     content=StringField('Content', validators=[DataRequired()])
-    
+    add=SubmitField('ADD')
