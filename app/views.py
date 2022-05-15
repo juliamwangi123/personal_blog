@@ -39,6 +39,9 @@ def newPost():
         db.session.commit()
         flash('blog added succesfully')
         return redirect(url_for('home'))
+
+
+#all blogs 
 @app.route('/blogs')
 def blogs():
       blogs = Blog.query.order_by(Blog.time_posted.desc()).all()
@@ -68,7 +71,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 
 #regestration of new user
@@ -84,4 +87,4 @@ def register():
         db.session.commit()
         flash(f'Account succesfully created', 'success')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('reg.html', title='Register', form=form)

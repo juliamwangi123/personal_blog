@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from app import login
 
 
-class Blog(UserMixin ,db.Model):
+class Blog(UserMixin,db.Model):
     id=db.Column(db.Integer, primary_key=True)
     title=db.Column(db.String(30))
     sub_title=db.Column(db.String(20))
@@ -22,7 +22,7 @@ class Blog(UserMixin ,db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)

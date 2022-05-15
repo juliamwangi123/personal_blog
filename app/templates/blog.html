@@ -1,15 +1,70 @@
-{% extends 'base.html'%}
-{%block content%}
-    <div class="container blogs">
-        {%for blog in blogs%}
-        <div class="row">
-            <div class="col-6">
-                <p>{{blog.title}}</p>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body id="body">
+    <nav>
+        <div class="logo">
+            <p>Inner Pieces</p>
+            <p >Thoughts on Lifestyle & Mental Health</p>
+        </div>
+
+        <div class="navmenu">
+         {% if current_user.is_anonymous %}
+         <a href="{{url_for('home')}}">Home</a>
+         <a href="{{url_for('blogs')}}">Blog</a>
+         <a href="{{url_for('about')}}">About</a>
+
+         <a href="{{url_for('register')}}">Sign Up</a>
+         <a href="{{url_for('login')}}">login</a>
+
+
+
+         {% else %}
+         <a href="{{url_for('new')}}">Add Blog</a>
+         <a href="{{url_for('logout')}}">logout</a>
+
+
+         {% endif %}
 
         </div>
-       
-        {%endfor%}
-    </div>
 
-{%endblock%}
+    </nav>
+
+    <div class="container blogs">
+        {%for blog in blogs %}
+
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="square">
+                      <img src="../static/img/test.png" class="mask">
+                   <div class="h1">{{blog.title}}</div>
+                      <p>{{blog.sub_title}}</p>
+                      
+                   <div><a href="{{blog.content}}" target="_" class="button">Read More</a></div>
+                    </div>
+                    
+                    
+                    
+                    </div>
+                    
+                      
+                    
+                    
+                  </div>
+                  
+            </div>
+            {%endfor%}
+
+    
+        </div>
+       
+
+</body>
+</html>
