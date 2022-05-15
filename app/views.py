@@ -88,3 +88,10 @@ def register():
         flash(f'Account succesfully created', 'success')
         return redirect(url_for('login'))
     return render_template('reg.html', title='Register', form=form)
+
+#read full articale route
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    blogs = Blog.query.filter_by(id=post_id).one()
+
+    return render_template('indvidual_blogs.html', blogs=blogs)

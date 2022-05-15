@@ -47,7 +47,7 @@
                    <div class="h1">{{blog.title}}</div>
                       <p>{{blog.sub_title}}</p>
                       
-                   <div><a href="{{blog.content}}" target="_" class="button">Read More</a></div>
+                   <div><a href="{{url_for('post', post_id=blog.id)}}" target="_" class="button">Read More</a></div>
                     </div>
                     
                     
