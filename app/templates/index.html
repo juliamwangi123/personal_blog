@@ -1,6 +1,27 @@
 {% extends 'base.html'%}
 {%block content%}
-{%for blog in blogs%}
-    <p>{{blog.title}}</p>
-{%endfor%}
+<div class="upperpart">
+    <div class="upperpart1">
+        <img src="../static/img/home1.jpeg" alt="">
+    </div>
+   
+
+    <div class="card">
+        <h1>My Thoughts</h1>
+        <div class="square">
+          <img src="../static/img/test.png" class="mask">
+       <div class="h1">{{blogs[0].title}}</div>
+          <p>{{blogs[0].sub_title}}</p>
+          
+       <div><a href="{{url_for('post', post_id=blogs[0].id)}}" target="_" class="button">Read More</a></div>
+        </div>
+        
+        
+        
+        </div>
+        
+          
+
+</div>
+
 {%endblock%}
