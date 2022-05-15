@@ -6,16 +6,22 @@
     </div>
    
 
-    <div class="card">
-        <h1>My Thoughts</h1>
-        <div class="square">
-          <img src="../static/img/test.png" class="mask">
-       <div class="h1">{{blogs[0].title}}</div>
-          <p>{{blogs[0].sub_title}}</p>
-          
-       <div><a href="{{url_for('post', post_id=blogs[0].id)}}" target="_" class="button">Read More</a></div>
+    <div class="cardTop">
+        <h2>My Thoughts</h2>
+       
+        <div class="topImage">
+            <img src="../static/img/Tinnacriss.jpeg" >
+
         </div>
-        
+        <div class="details">
+            <h4>Detoxing my social media feed</h4>
+            <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</p>
+
+        </div>
+            <div class="allblogs">
+                <p><a href="{{url_for('blogs')}}">All Post</a></p>
+            </div>
+       
         
         
         </div>
@@ -23,5 +29,41 @@
           
 
 </div>
+<div class="container recentPost">
+    <h2>Recents Post</h2>
+    {%for blog in blogs%}
+
+                    <div class="blogCard">
+
+                    <div class="cardImage">
+                        <img src="../static/img/Tinnacriss.jpeg" >
+                    </div>
+
+                    <div class="blogCard2">
+                        <div class="blogdetails">
+                            <small>{{blog.time_posted.strftime("%Y-%m-%d")}} .2min</small>
+
+                            <!-- <h4>Detoxing my social media feed</h4> -->
+                            <h4>{{blog.title}}</h4>
+                            <!-- <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</p> -->
+                            <p>{{blog.sub_title}}</p>
+    
+                        </div>
+                            
+                        
+                        </div>
+                    </div>
+                    
+                    
+                    {%endfor%}
+
+                    
+                      
+</div>           
+                    
+
 
 {%endblock%}
+
+
+
