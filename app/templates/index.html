@@ -31,7 +31,7 @@
 </div>
 <div class="container recentPost">
     <h2>Recents Post</h2>
-    {%for blog in blogs%}
+
 
                     <div class="blogCard">
 
@@ -41,12 +41,12 @@
 
                     <div class="blogCard2">
                         <div class="blogdetails">
-                            <small>{{blog.time_posted.strftime("%Y-%m-%d")}} .2min</small>
+                            <small>{{blogs[2].time_posted.strftime('%B %d, %Y')}} .2min</small>
 
                             <!-- <h4>Detoxing my social media feed</h4> -->
-                            <h4>{{blog.title}}</h4>
+                            <h4>{{blogs[2].title}}</h4>
                             <!-- <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</p> -->
-                            <p>{{blog.sub_title}}</p>
+                            <p> <a href="{{url_for('post', post_id=blogs[2].id)}}">{{blogs[2].sub_title}}continue reading...</a></p>
     
                         </div>
                         <hr>
@@ -55,9 +55,34 @@
                         
                         </div>
                     </div>
+
+                    <!-- second blog -->
+
+                    <div class="blogCard">
+
+                        <div class="cardImage">
+                            <img src="../static/img/Tinnacriss.jpeg" >
+                        </div>
+    
+                        <div class="blogCard2">
+                            <div class="blogdetails">
+                                <small>{{blogs[1].time_posted.strftime('%B %d, %Y')}} .2min</small>
+    
+                                <!-- <h4>Detoxing my social media feed</h4> -->
+                                <h4>{{blogs[1].title}}</h4>
+                                <!-- <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</p> -->
+                                <p> <a href="{{url_for('post', post_id=blogs[1].id)}}">{{blogs[1].sub_title}}continue reading...</a></p>
+        
+                            </div>
+                            <hr>
+                            <small>0 comments</small>
+                                
+                            
+                            </div>
+                        </div>
                     
                     
-                    {%endfor%}
+                
 
                     
                       

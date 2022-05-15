@@ -299,7 +299,10 @@ footer{
     margin-bottom: 30px;
 
 }
-
+.cardImage{
+    height: 100%;
+    width:40%;
+}
 .cardImage img{
     height: 100%;
     width:100%;
@@ -308,6 +311,7 @@ footer{
 .blogCard2{
     margin-left: 30px;
     height: 100%;
+    width: 50%;
     
 }
 
@@ -360,4 +364,14 @@ hr{
     border-radius: 0 20px 20px 0;
     background: #243c4f;
     color: #fff;
+    }
+
+    .individual h4{
+        font-size: 40px;
+        color: #414141;
+        font-family: 'libre baskerville',serif;
+
+    }
+    .individual small{
+        color: rgba(65, 65, 65,.6);
     }
