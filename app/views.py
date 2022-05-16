@@ -1,3 +1,4 @@
+from crypt import methods
 from csv import writer
 from datetime import datetime
 import re
@@ -92,26 +93,33 @@ def register():
     return render_template('reg.html', title='Register', form=form)
 
 #read full articale route
-@app.route('/post/<int:post_id>')
+@app.route('/post/<int:post_id>', methods=['POST','GET'])
 def post(post_id):
     blogs = Blog.query.filter_by(id=post_id).one()
-    comments=Comment.query.filter_by(blog_id=blogs.id)
-
-
-    return render_template('indvidual_blogs.html', blogs=blogs, comments=comments)
-
-
-
-@app.route("/post/<int:post_id>/comment", methods=["GET", "POST"])
-def comment_post(post_id):
-    post = Blog.query.get_or_404(post_id)
     form = CommentForm()
+
     if form.validate_on_submit():
         comment = Comment(body=form.body.data, blog_id=post_id, author=current_user.id)
         db.session.add(comment)
         db.session.commit()
         flash("Your comment has been added to the post", "success")
-        return redirect(url_for("post", post_id=post.id))
-    return render_template("comment.html", title="Comment Post", form=form, post=post)
+        return redirect(url_for("post", post_id=blogs.id))
+
+    comments=Comment.query.filter_by(blog_id=blogs.id)
+    return render_template('indvidual_blogs.html', blogs=blogs, comments=comments,form=form)
+
+
+
+# @app.route("/post/<int:post_id>/comment", methods=["GET", "POST"])
+# def comment_post(post_id):
+#     post = Blog.query.get_or_404(post_id)
+#     form = CommentForm()
+#     if form.validate_on_submit():
+#         comment = Comment(body=form.body.data, blog_id=post_id, author=current_user.id)
+#         db.session.add(comment)
+#         db.session.commit()
+#         flash("Your comment has been added to the post", "success")
+#         return redirect(url_for("post", post_id=post.id))
+#     return render_template("comment.html", title="Comment Post", form=form, post=post)
 
 

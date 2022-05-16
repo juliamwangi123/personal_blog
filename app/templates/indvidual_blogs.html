@@ -7,7 +7,13 @@
             <h4>{{blogs.title}}</h4>
             <p>{{blogs.sub_title}}</p>
             <p>{{blogs.content}}</p>
-            <a href="{{url_for('comment_post',post_id=blogs.id)}}">comment</a>
+            <form action="" method="POST">
+                {{form.hidden_tag()}}
+                {{form.body.label}}
+                {{form.body}}
+                {{form.submit}}
+            </form>
+
             {%for comment in comments%}
             <p>{{comment.body}}</p>
             {%endfor%}
