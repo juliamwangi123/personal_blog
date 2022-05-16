@@ -1,18 +1,34 @@
 from crypt import methods
 from csv import writer
 from datetime import datetime
+from email import message
+from http import server
 import re
 from app import app
-from flask import redirect, render_template, url_for,flash
+from flask import redirect, render_template, url_for,flash,request
 from app.models import Blog,User,Comment
 from app.forms import BlogForm,LoginForm,RegistrationForm,CommentForm
 from app import db
 from flask_login import current_user, login_user
 from flask_login import logout_user
+import smtplib 
+
 # home page route
 @app.route('/')
-@app.route('/home')
+@app.route('/home', methods=['POST','GET'])
 def home():
+
+    if request.method=='POST':
+        email=request.form.get('email')
+        message="You have subscribed successfully to InnerPieces"
+        server=smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login('innerpiece33@gmail.com', 'Mwangi@123')
+        server.sendmail('innerpiece33@gmail.com', email,message)
+        flash(f'subcribed successfuly', 'success')
+        return redirect(url_for('home'))
+
+
     blogs=Blog.query.all()
     return render_template('index.html', blogs=blogs)
 
@@ -81,7 +97,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)

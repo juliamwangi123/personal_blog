@@ -95,12 +95,15 @@
         <div class="single">
             <h2>Join the Conversations</h2>
             <p>Get the content you need, just when you need it</p>
-        <div class="input-group">
-             <input type="email" class="form-control" placeholder="Enter your email">
+            <form action="{{url_for('home')}}" method="POST">
+            <input type="email" class="form-control" placeholder="Enter your email" name="email" >
              <span class="input-group-btn">
              <button class="btn btn-theme" type="submit">Subscribe</button>
              </span>
+             
               </div>
+            </form>
+
         </div>
     </div>
     </div>

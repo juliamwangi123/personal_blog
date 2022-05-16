@@ -7,6 +7,10 @@
             <h4>{{blogs.title}}</h4>
             <p>{{blogs.sub_title}}</p>
             <p>{{blogs.content}}</p>
+
+            {%for comment in comments%}
+            <small style="display: block;">{{comment.body}}</small>
+            {%endfor%}
             <form action="" method="POST">
                 {{form.hidden_tag()}}
                 {{form.body.label}}
@@ -14,9 +18,7 @@
                 {{form.submit}}
             </form>
 
-            {%for comment in comments%}
-            <p>{{comment.body}}</p>
-            {%endfor%}
+            
 
         </div>
     </div>
