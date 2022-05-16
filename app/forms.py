@@ -40,3 +40,11 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
+
+
+
+
+#comment table
+class CommentForm(FlaskForm):
+    body = StringField("Comment", validators=[DataRequired()])
+    submit = SubmitField("Add")

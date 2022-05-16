@@ -1,9 +1,10 @@
+from csv import writer
 from datetime import datetime
 import re
 from app import app
 from flask import redirect, render_template, url_for,flash
-from app.models import Blog,User
-from app.forms import BlogForm,LoginForm,RegistrationForm
+from app.models import Blog,User,Comment
+from app.forms import BlogForm,LoginForm,RegistrationForm,CommentForm
 from app import db
 from flask_login import current_user, login_user
 from flask_login import logout_user
@@ -21,7 +22,8 @@ def about():
     return render_template('about.html')
 
 
-#route leads to add new blog route
+
+
 @app.route('/new')
 def new():
     form=BlogForm()
@@ -93,5 +95,23 @@ def register():
 @app.route('/post/<int:post_id>')
 def post(post_id):
     blogs = Blog.query.filter_by(id=post_id).one()
+    comments=Comment.query.filter_by(blog_id=blogs.id)
 
-    return render_template('indvidual_blogs.html', blogs=blogs)
+
+    return render_template('indvidual_blogs.html', blogs=blogs, comments=comments)
+
+
+
+@app.route("/post/<int:post_id>/comment", methods=["GET", "POST"])
+def comment_post(post_id):
+    post = Blog.query.get_or_404(post_id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(body=form.body.data, blog_id=post_id, author=current_user.id)
+        db.session.add(comment)
+        db.session.commit()
+        flash("Your comment has been added to the post", "success")
+        return redirect(url_for("post", post_id=post.id))
+    return render_template("comment.html", title="Comment Post", form=form, post=post)
+
+
