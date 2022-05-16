@@ -12,11 +12,16 @@ from app import db
 from flask_login import current_user, login_user
 from flask_login import logout_user
 import smtplib 
+import urllib.request, json
 
 # home page route
 @app.route('/')
 @app.route('/home', methods=['POST','GET'])
 def home():
+    url='http://quotes.stormconsultancy.co.uk/random.json'
+    response=urllib.request.urlopen(url)
+    data=response.read()
+    dict=json.loads(data)
 
     if request.method=='POST':
         email=request.form.get('email')
@@ -30,7 +35,7 @@ def home():
 
 
     blogs=Blog.query.all()
-    return render_template('index.html', blogs=blogs)
+    return render_template('index.html', blogs=blogs ,quotes=dict)
 
 
 #route to about section
