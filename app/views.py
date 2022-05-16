@@ -95,7 +95,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 
 #regestration of new user
@@ -144,3 +144,20 @@ def post(post_id):
 #     return render_template("comment.html", title="Comment Post", form=form, post=post)
 
 
+# @app.route('/blog/<int:blog_id>',methods=['GET','POST'])
+# @login_required
+# def update_blog(blog_id):
+#     blog = Blog.query.get_or_404(blog_id)
+#     if blog.author != current_user:
+#         abort(403)
+#     form = NewBlog()
+#     if form.validate_on_submit():
+#         blog.title = form.title.data
+#         blog.content = form.content.data
+#         db.session.commit()
+#         flash('Your pitch has been updated','success')
+#         return redirect(url_for('home'))
+#     elif request.method == 'GET':
+#         form.title.data = blog.title
+#         form.content.data = blog.content
+#     return render_template('newblog.html',form= form, header='Update post')
