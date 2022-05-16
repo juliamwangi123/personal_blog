@@ -22,6 +22,7 @@ def home():
     response=urllib.request.urlopen(url)
     data=response.read()
     dict=json.loads(data)
+   
 
     if request.method=='POST':
         email=request.form.get('email')

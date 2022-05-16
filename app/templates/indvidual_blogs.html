@@ -7,16 +7,50 @@
             <h4>{{blogs.title}}</h4>
             <p>{{blogs.sub_title}}</p>
             <p>{{blogs.content}}</p>
-
+                <h5>Comments</h5>
             {%for comment in comments%}
-            <small style="display: block;">{{comment.body}}</small>
+            <!-- <small style="display: block;">{{comment.body}}</small> -->
+            <div class="cardcomment  ">
+                <div class="card-body">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong "
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp" alt="avatar" width="40"
+                      height="40" />
+                    <div class="w-100">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="text-primary fw-bold mb-0">
+                          {{comment.writer.username}}
+                          <span class="text-dark ms-2">{{comment.body}}</span>
+                        </h6>
+                        <p class="mb-0">{{comment.timestamp.strftime('%B %d, %Y')}}</p>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <p class="small mb-0" style="color: #aaa;">
+                          <a href="#!" class="link-grey">Remove</a> •
+                          
+                        </p>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             {%endfor%}
+
+            <div class="commentBox">
+                <h5>LEAVE A COMMENT</h5>
+                {% if current_user.is_anonymous %}
+                    <p>You have to login to leave a comment  <a href="{{url_for('login')}}">login here</a></p>
+
+                {%else%}
             <form action="" method="POST">
                 {{form.hidden_tag()}}
-                {{form.body.label}}
-                {{form.body}}
+                {{form.body(value='comment')}}
                 {{form.submit}}
             </form>
+            {%endif%}
+            </div>
+            
 
             
 
@@ -24,3 +58,4 @@
     </div>
 
 {%endblock%}
+

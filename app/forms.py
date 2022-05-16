@@ -47,4 +47,4 @@ class RegistrationForm(FlaskForm):
 #comment table
 class CommentForm(FlaskForm):
     body = StringField("Comment", validators=[DataRequired()])
-    submit = SubmitField("Add")
+    submit = SubmitField("Submit")
