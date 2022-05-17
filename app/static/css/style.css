@@ -465,3 +465,12 @@ hr{
     color: #D14200;
 
    }
+
+   .loginform{
+       width: 600px;
+       display: flex;
+       justify-content: center;
+       border: 2px solid silver;
+       position: relative;
+       left: 30%;
+   }
