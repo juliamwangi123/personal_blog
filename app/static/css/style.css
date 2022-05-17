@@ -426,3 +426,42 @@ hr{
        width: 50px;
        background-color: red
    }
+
+   .details p a{
+       color:#414141;
+
+   }
+   .details:hover{
+    color: #D14200;
+
+   }
+   .details p a:hover{
+    color: #D14200;
+
+}
+   .blogdetails:hover{
+    color: #D14200;
+
+
+   }
+   .blogdetails p a{
+    color:#414141;
+
+
+   }
+
+   .blogdetails p a:hover{
+    color: #D14200;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    
+
+
+
+   }
+   .allblogs  a{
+       color:#414141
+   }
+   .navmenu a:hover{
+    color: #D14200;
+
+   }

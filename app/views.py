@@ -73,6 +73,7 @@ def newPost():
 @app.route('/blogs')
 def blogs():
       blogs = Blog.query.order_by(Blog.time_posted.desc()).all()
+      
 
       return render_template('blog.html', blogs=blogs)
 
@@ -124,6 +125,7 @@ def post(post_id):
     form = CommentForm()
 
     if form.validate_on_submit():
+       
         comment = Comment(body=form.body.data, blog_id=post_id, author=current_user.id)
         db.session.add(comment)
         db.session.commit()
@@ -131,7 +133,9 @@ def post(post_id):
         return redirect(url_for("post", post_id=blogs.id))
 
     comments=Comment.query.filter_by(blog_id=blogs.id)
-    return render_template('indvidual_blogs.html', blogs=blogs, comments=comments,form=form)
+    cc=[]
+    cc.append(comments)
+    return render_template('indvidual_blogs.html', blogs=blogs, comments=comments,form=form,cc=cc)
 
 
 
@@ -181,5 +185,6 @@ def delete(blog_id):
         db.session.commit()
 
     return redirect(url_for('blogs'))
+
 
 
