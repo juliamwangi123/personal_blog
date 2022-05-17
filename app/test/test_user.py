@@ -24,7 +24,7 @@ class TestUser(unittest.TestCase):
         """
         Will test whether the User model is instantiated correctly
         """
-        self.assertEqual(self.new_user.username,"Ollie")
+        self.assertEqual(self.new_user.username,"jules")
     def test_password_generate(self):
         """
         Will test whether a password is generated
