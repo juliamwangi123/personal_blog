@@ -14,8 +14,9 @@
 
         </div>
         <div class="details">
-            <h4>Detoxing my social media feed</h4>
-            <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</p>
+            <h4>{{blogs[4].title}}</h4>
+            <p> <a href="{{url_for('post', post_id=blogs[4].id)}}">{{blogs[4].sub_title}}.Continue reading...</a></p>
+
 
         </div>
             <div class="allblogs">
@@ -36,15 +37,15 @@
                     <div class="blogCard">
 
                     <div class="cardImage">
-                        <img src="../static/img/shoe.jpeg" >
+                        <img src="../static/img/music.jpeg" >
                     </div>
 
                     <div class="blogCard2">
                         <div class="blogdetails">
-                            <small>{{blogs[2].time_posted.strftime('%B %d, %Y')}} .2min</small>
+                            <small>{{blogs[3].time_posted.strftime('%B %d, %Y')}} .2min</small>
 
-                            <h4>{{blogs[2].title}}</h4>
-                            <p> <a href="{{url_for('post', post_id=blogs[2].id)}}">{{blogs[2].sub_title}}continue reading...</a></p>
+                            <h4>{{blogs[3].title}}</h4>
+                            <p> <a href="{{url_for('post', post_id=blogs[3].id)}}">{{blogs[3].sub_title}}.Continue reading...</a></p>
     
                         </div>
                         <hr>
@@ -59,17 +60,15 @@
                     <div class="blogCard">
 
                         <div class="cardImage">
-                            <img src="../static/img/music.jpeg" >
+                            <img src="../static/img/shoe.jpeg" >
                         </div>
     
                         <div class="blogCard2">
                             <div class="blogdetails">
-                                <small>{{blogs[1].time_posted.strftime('%B %d, %Y')}} .2min</small>
+                                <small>{{blogs[2].time_posted.strftime('%B %d, %Y')}} .2min</small>
     
-                                <!-- <h4>Detoxing my social media feed</h4> -->
-                                <h4>{{blogs[1].title}}</h4>
-                                <!-- <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</p> -->
-                                <p> <a href="{{url_for('post', post_id=blogs[1].id)}}">{{blogs[1].sub_title}}continue reading...</a></p>
+                                <h4>{{blogs[2].title}}</h4>
+                                <p> <a href="{{url_for('post', post_id=blogs[2].id)}}">{{blogs[2].sub_title}}.Continue reading...</a></p>
         
                             </div>
                             <hr>

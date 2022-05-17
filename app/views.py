@@ -49,6 +49,7 @@ def about():
 #add a ne blog
 
 @app.route('/new')
+@login_required
 def new():
     form=BlogForm()
 
@@ -57,6 +58,7 @@ def new():
 
 #add new blog route
 @app.route('/newblog', methods=['POST', 'GET'])
+@login_required
 def newPost():
     form=BlogForm()
     if form.validate_on_submit:
@@ -174,8 +176,7 @@ def update_blog(blog_id):
 @login_required
 def delete(blog_id):
     blog=Blog.query.get_or_404(blog_id)
-    comment=Comment.get_or_404()
-    if current_user == blog.author:
+    if current_user != blog.author:
         db.session.delete(blog)
         db.session.commit()
 
