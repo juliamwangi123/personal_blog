@@ -13,6 +13,7 @@ from flask_login import current_user, login_user
 from flask_login import logout_user
 import smtplib 
 import urllib.request, json
+from flask_login import login_required
 
 # home page route
 @app.route('/')
@@ -45,7 +46,7 @@ def about():
     return render_template('about.html')
 
 
-
+#add a ne blog
 
 @app.route('/new')
 def new():
@@ -145,20 +146,39 @@ def post(post_id):
 #     return render_template("comment.html", title="Comment Post", form=form, post=post)
 
 
-# @app.route('/blog/<int:blog_id>',methods=['GET','POST'])
-# @login_required
-# def update_blog(blog_id):
-#     blog = Blog.query.get_or_404(blog_id)
-#     if blog.author != current_user:
-#         abort(403)
-#     form = NewBlog()
-#     if form.validate_on_submit():
-#         blog.title = form.title.data
-#         blog.content = form.content.data
-#         db.session.commit()
-#         flash('Your pitch has been updated','success')
-#         return redirect(url_for('home'))
-#     elif request.method == 'GET':
-#         form.title.data = blog.title
-#         form.content.data = blog.content
-#     return render_template('newblog.html',form= form, header='Update post')
+
+#edit post
+@app.route('/blog/<int:blog_id>',methods=['GET','POST'])
+@login_required
+def update_blog(blog_id):
+    blog = Blog.query.get_or_404(blog_id)
+    if blog.author == current_user:
+        flash(f'You have no permission to edit' , 'danger')
+    form = BlogForm()
+    if form.validate_on_submit():
+        blog.title = form.title.data
+        blog.sub_title=form.sub_title.data
+        blog.content = form.content.data
+        db.session.commit()
+        flash('Your pitch has been updated','success')
+        return redirect(url_for('home'))
+    elif request.method == 'GET':
+        form.title.data = blog.title
+        form.sub_title.data=blog.sub_title
+        form.content.data = blog.content
+    return render_template('newblog.html',form=form, blog=blog)
+
+
+#delete blog
+@app.route('/delete<int:blog_id>',methods=['POST', 'GET'])
+@login_required
+def delete(blog_id):
+    blog=Blog.query.get_or_404(blog_id)
+    comment=Comment.get_or_404()
+    if current_user == blog.author:
+        db.session.delete(blog)
+        db.session.commit()
+
+    return redirect(url_for('blogs'))
+
+

@@ -7,6 +7,16 @@
             <h4>{{blogs.title}}</h4>
             <p>{{blogs.sub_title}}</p>
             <p>{{blogs.content}}</p>
+
+
+            <div class="butns">
+                <a href="{{url_for('update_blog', blog_id=blogs.id)}}">Edit Post  </a>
+                <a href="{{url_for('delete' , blog_id=blogs.id)}}">Delete Post</a>
+            </div>
+
+
+
+            <!-- comments section -->
                 <h5>Comments</h5>
             {%for comment in comments%}
             <!-- <small style="display: block;">{{comment.body}}</small> -->

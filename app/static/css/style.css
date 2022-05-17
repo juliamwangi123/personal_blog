@@ -413,3 +413,16 @@ hr{
        height: 300px;
        margin-top: 20px;
    }
+
+   .butns{
+      margin-left: 800px;
+   }
+
+   .butns a{
+       border: 1px solid silver;
+       margin-left: 20px;
+       padding: 10px;
+       color: white;
+       width: 50px;
+       background-color: red
+   }
