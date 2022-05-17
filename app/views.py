@@ -1,9 +1,7 @@
-from crypt import methods
-from csv import writer
 from datetime import datetime
 from email import message
 from http import server
-import re
+
 from app import app
 from flask import redirect, render_template, url_for,flash,request
 from app.models import Blog,User,Comment

@@ -1,4 +1,3 @@
-from turtle import title
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired,Email,EqualTo, ValidationError
 from wtforms import StringField,SubmitField,TextAreaField,PasswordField,BooleanField
