@@ -31,6 +31,7 @@ class TestBlog(unittest.TestCase):
         Will test whether the new_blog is instantiated correctly
         """
         self.assertEqual(self.new_blog.title, "hello")
+        
     def test_save_pitch(self):
         """
         Will test whether the user is saved into the database
@@ -38,6 +39,7 @@ class TestBlog(unittest.TestCase):
         self.new_blog.save_pitch()
         blogs = Blog.query.all()
         self.assertTrue(len(blogs) > 0)
+
     def test_relationship_user(self):
         """
             Will test whether the blog is correctly related to the user who posted it

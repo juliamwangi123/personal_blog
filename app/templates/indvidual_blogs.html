@@ -18,7 +18,10 @@
 
             <!-- comments section -->
                 <h5>Comments</h5>
+                {% for c in cc%}
                 <small>{{cc|length}}</small>
+                {%endfor%}
+              
             {%for comment in comments%}
             <!-- <small style="display: block;">{{comment.body}}</small> -->
             <div class="cardcomment  ">
