@@ -18,9 +18,7 @@
 
             <!-- comments section -->
                 <h5>Comments</h5>
-                {% for c in cc%}
-                <small>{{cc|length}}</small>
-                {%endfor%}
+               <p>{{blogs.comments|length}}</p>
               
             {%for comment in comments%}
             <!-- <small style="display: block;">{{comment.body}}</small> -->

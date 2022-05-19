@@ -32,6 +32,7 @@ def home():
 
 
     blogs=Blog.query.all()
+
     return render_template('index.html', blogs=blogs ,quotes=dict)
 
 
